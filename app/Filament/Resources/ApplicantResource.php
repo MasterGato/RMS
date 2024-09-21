@@ -17,7 +17,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Date;
-use Filament\Forms\Components\Section;  
+use Filament\Forms\Components\Section;
 
 class ApplicantResource extends Resource
 {
@@ -182,18 +182,18 @@ class ApplicantResource extends Resource
                     ->collapsible()
                     ->schema([
 
-                        TextInput::make('Level')
+                        TextInput::make('education.Level')
                         ->required(fn(string $context) => $context === 'create')
                         ->unique(ignoreRecord: true)
                         ->string()->rules('regex:/^[^\d]*$/'),
 
-                        TextInput::make('Elementary')
+                        TextInput::make('education.Elementary')
                         ->label('Elementary school')
                         ->required(fn(string $context) => $context === 'create')
                         ->unique(ignoreRecord: true)
                         ->string()->rules('regex:/^[^\d]*$/'),
 
-                        Select::make('year_graduated')
+                        Select::make('education.year_graduated')
                         ->label('Year Graduated')
                         ->options(
                             collect(range(now()->year - 22, now()->year))->mapWithKeys(function ($year) {
@@ -203,17 +203,17 @@ class ApplicantResource extends Resource
                         ->required()
                         ->rules('required'),
 
-                        TextInput::make('Level')
+                        TextInput::make('education.Level')
                         ->required(fn(string $context) => $context === 'create')
                         ->unique(ignoreRecord: true)
                         ->string()->rules('regex:/^[^\d]*$/'),
 
-                        TextInput::make('Highschool')
+                        TextInput::make('education.Highschool')
                         ->required(fn(string $context) => $context === 'create')
                         ->unique(ignoreRecord: true)
                         ->string()->rules('regex:/^[^\d]*$/'),
 
-                        Select::make('year_graduated')
+                        Select::make('education.year_graduated')
                         ->label('Year Graduated')
                         ->options(
                             collect(range(now()->year - 22, now()->year))->mapWithKeys(function ($year) {
@@ -222,18 +222,18 @@ class ApplicantResource extends Resource
                         )
                         ->required()
                         ->rules('required'),
-                        TextInput::make('Level')
+                        TextInput::make('education.Level')
                         ->required(fn(string $context) => $context === 'create')
                         ->unique(ignoreRecord: true)
                         ->string()->rules('regex:/^[^\d]*$/'),
 
-                        TextInput::make('College')
+                        TextInput::make('education.College')
                         ->label('College')
                         ->required(fn(string $context) => $context === 'create')
                         ->unique(ignoreRecord: true)
                         ->string()->rules('regex:/^[^\d]*$/'),
 
-                       Select::make('year_graduated')
+                       Select::make('education.year_graduated')
                         ->label('Year Graduated')
                         ->options(
                             collect(range(now()->year - 22, now()->year))->mapWithKeys(function ($year) {
@@ -247,22 +247,24 @@ class ApplicantResource extends Resource
 
                 Section::make('Work Experience')
                     ->collapsible()
-                    
+
                     ->schema([
-                        TextInput::make('Company')
+                        TextInput::make('workExperiences.Company')
                         ->label('Company')
                         ->required(fn(string $context) => $context === 'create')
                         ->unique(ignoreRecord: true)
                         ->string()->rules('regex:/^[^\d]*$/'),
 
-                        TextInput::make('Work')
+
+
+                        TextInput::make('workExperiences.Work')
                         ->label('Work')
                         ->required(fn(string $context) => $context === 'create')
                         ->unique(ignoreRecord: true)
                         ->string()->rules('regex:/^[^\d]*$/'),
-                        
 
-                        TextInput::make('Year')
+
+                        TextInput::make('workExperiences.Year')
                         ->label('Years Experience')
                         ->required(fn(string $context) => $context === 'create')
                         ->unique(ignoreRecord: true)
@@ -328,7 +330,7 @@ class ApplicantResource extends Resource
                     ->label('Status')
                     ->searchable(),
 
-                
+
 
             ])
             ->filters([
@@ -347,7 +349,7 @@ class ApplicantResource extends Resource
     public static function getRelations(): array
     {
         return [
-            
+
         ];
     }
 

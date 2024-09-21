@@ -29,9 +29,14 @@ class Applicant extends Model
         'Status'
     ];
 
-    public function work(){
+    public function workExperiences(){
         return $this->hasMany(WorkExperience::class);
     }
-    
-    
+
+
+    public function education(){
+        return $this->hasMany(EducationalAttainment::class);
+    }
+
+
 }

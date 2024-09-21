@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class WorkExperience extends Model
 {
-    
+
     use HasFactory;
 
     protected $fillable = [
@@ -17,8 +17,8 @@ class WorkExperience extends Model
         'Work',
         'Year'
     ];
-    public function Applicants(): HasMany
+    public function applicant()
     {
-        return $this->hasMany(Applicant::class, foreignKey:'ApplicantID');
+        return $this->belongsTo(Applicant::class);
     }
 }

@@ -16,8 +16,8 @@ class EducationalAttainment extends Model
         'Institution',
         'InclusiveDate'
     ];
-    public function Applicants(): HasOne
+    public function Applicants()
     {
-        return $this->hasOne(Applicant::class);
+        return $this->belongsTo(Applicant::class);
     }
 }
